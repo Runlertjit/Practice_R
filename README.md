@@ -199,7 +199,7 @@ book_price_plot + ggtitle("Price Average of Type Book") + xlab("Type") + ylab("P
 ```
 Result:
 
-![Graph 1](graph1.png)
+![Graph 1](Rplot01.png)
 
 **Guideline:
 Embed Image by using this syntax in markdown file

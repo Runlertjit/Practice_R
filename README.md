@@ -65,6 +65,7 @@ Result:
 - list 1
 - list 2
 
+
 2. What is the average rating of each book type?
 
 ```
@@ -89,6 +90,7 @@ Result:
 - list 1
 - list 2
 
+
 3. What is the average price of each type of book?
 
 ```
@@ -112,6 +114,7 @@ Result:
 
 - list 1
 - list 2
+
 
 4. Find out which books have ratings more than 4.50.
 
@@ -140,6 +143,7 @@ Book_title                                       Number_Of_Pages Price Rating
 - list 1
 - list 2
 
+
 5. Find out how many books are rating less than the average of each type book.
 
 ```
@@ -161,6 +165,7 @@ Result:
 
 - list 1
 - list 2
+
 
 6. How many books have less than 200 reviews and a rating of more than 4.00 by grouping by book type.
 
@@ -201,6 +206,7 @@ Result:
 
 ![Graph 1](Rplot.png)
 
+
 ### 2.) The chart shows the ratings of each book type.
 ```
 book_rt_plot <- books %>% mutate(Type = fct_lump(Type,n=5)) %>%  group_by(Type) %>%
@@ -213,4 +219,4 @@ book_rt_plot + ggtitle("Rating Average of Type Book") +
 ```
 Result:
 
-![Graph 1](Rplot01.png)
+![Graph 2](Rplot01.png)

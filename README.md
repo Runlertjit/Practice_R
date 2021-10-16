@@ -191,7 +191,7 @@ Result:
 ```
 book_price_plot <- books %>% mutate(Type = fct_lump(Type,n=4)) %>% count(Type,sort = T)
 
-#graph
+#GGplot2
 book_price_plot <- book_price_plot %>% ggplot(aes(x = fct_infreq(Type),y = n)) + geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
   coord_flip() + theme_bw()
 
@@ -201,8 +201,16 @@ Result:
 
 ![Graph 1](Rplot.png)
 
-**Guideline:
-Embed Image by using this syntax in markdown file
-````
-![Name](imageFile)
-````
+### 2.) Graph show relation between height and mass
+```
+book_rt_plot <- books %>% mutate(Type = fct_lump(Type,n=5)) %>%  group_by(Type) %>%
+  summarise(mean = mean(Rating, na.rm = TRUE))
+#GGplot2
+book_rt_plot <- book_rt_plot %>% ggplot(aes(x = Type,y = mean)) + geom_point(aes(color=Type)) 
+
+book_rt_plot + ggtitle("Rating Average of Type Book") +
+  xlab("Type") + ylab("Rating average")
+```
+Result:
+
+![Graph 1](Rplot01.png)

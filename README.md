@@ -37,13 +37,13 @@ most popular were selected.
 
 ```
 books %>% mutate(Type = fct_lump(Type,n=4))
-book_price_plot %>% ggplot(aes(x = fct_infreq(Type),y = n))
+ggplot(aes(x = fct_infreq(Type),y = n)) + geom_bar(stat="identity")
 ```
 ** You can sepearate this part or combine in part of `Transform data with dplyr and finding insight the data`
 
 ## Part 3: Transform data with dplyr and finding insight the data
 
-//Explain here
+1. Find out how many books in each type of this dataset are there.
 
 ```
 books %>% mutate(Type = fct_lump(Type,n=4)) %>% count(Type,sort = T)
@@ -65,7 +65,7 @@ Result:
 - list 1
 - list 2
 
-//Explain here
+2. What is the average rating of each book type?
 
 ```
 books %>% mutate(Type = fct_lump(Type,n=5)) %>%  group_by(Type) %>%
@@ -89,7 +89,7 @@ Result:
 - list 1
 - list 2
 
-//Explain here
+3. What is the average price of each type of book?
 
 ```
 books %>% mutate(Type = fct_lump(Type,n=6)) %>%  group_by(Type) %>%
@@ -113,7 +113,7 @@ Result:
 - list 1
 - list 2
 
-//Explain here
+4. Find out which books have ratings more than 4.50.
 
 ```
 books %>% select(Book_title,Number_Of_Pages,Price,Rating) %>% filter(Rating > 4.50)
@@ -140,7 +140,7 @@ Book_title                                       Number_Of_Pages Price Rating
 - list 1
 - list 2
 
-//Explain here
+5. Find out how many books are rating less than the average of each type book.
 
 ```
 books %>% filter(Rating < mean(Rating, na.rm = TRUE)) %>% group_by(Type) %>% count()
@@ -162,7 +162,7 @@ Result:
 - list 1
 - list 2
 
-//Explain here
+6. How many books have less than 200 reviews and a rating of more than 4.00 by grouping by book type.
 
 ```
 books %>% filter(Reviews < 200 & Rating > 4.00 ) %>% group_by(Type) %>% count()
@@ -187,7 +187,7 @@ Result:
 
 
 ## Part 4: Visualization with GGplot2
-### 1.) Graph show relation between height and mass
+### 1.) The bar chart represents the number of books of each type.
 ```
 book_price_plot <- books %>% mutate(Type = fct_lump(Type,n=4)) %>% count(Type,sort = T)
 
@@ -201,7 +201,7 @@ Result:
 
 ![Graph 1](Rplot.png)
 
-### 2.) Graph show relation between height and mass
+### 2.) The chart shows the ratings of each book type.
 ```
 book_rt_plot <- books %>% mutate(Type = fct_lump(Type,n=5)) %>%  group_by(Type) %>%
   summarise(mean = mean(Rating, na.rm = TRUE))

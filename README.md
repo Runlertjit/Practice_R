@@ -5,9 +5,6 @@
 Choose Dataset:
 1. Top 270 Computer Science / Programing Books (Data from Thomas Konstantin, [Kaggle](https://www.kaggle.com/thomaskonstantin/top-270-rated-computer-science-programing-books)) >> [Using CSV](https://raw.githubusercontent.com/safesit23/INT214-Statistics/main/datasets/prog_book.csv)
 
-2. Superstore Sales Dataset (Data from Rohit Sahoo,[Kaggle](https://www.kaggle.com/rohitsahoo/sales-forecasting)) >> [Using CSV](https://raw.githubusercontent.com/safesit23/INT214-Statistics/main/datasets/superstore_sales.csv)
-
-
 ### Outlines
 1. Explore the dataset
 2. Learning function from Tidyverse
@@ -18,13 +15,18 @@ Choose Dataset:
 
 ```
 # Library
-library(name)
+library(dplyr)
+library(readr)
+library(ggplot2)
+library(forcats)
 
 # Dataset
-dataset <- read_csv("")
+books <- read_csv("https://raw.githubusercontent.com/safesit23/INT214-Statistics/main/datasets/prog_book.csv")
 ```
 
-In this dataset has .....
+This dataset holds a list of 270 books in the field of computer science and programming related topics.
+The list of books was constructed using many popular websites which provide information on book ratings an of all the book in those websites the 270 
+most popular were selected.
 
 
 

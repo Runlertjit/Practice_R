@@ -32,10 +32,13 @@ most popular were selected.
 
 ## Part 2: Learning function from Tidyverse
 
-- Function `select()` from package [dplyr](https://dplyr.tidyverse.org/articles/dplyr.html#select-columns-with-select)). It using for select columns
+- Function `fct_lump()` from package [forcats](https://forcats.tidyverse.org/articles/forcats.html)). It using for collapsing the least/most frequent values of a factor into “other”.
+- Function `fct_infreq()` from package [forcats](https://forcats.tidyverse.org/articles/forcats.html)). It using for reordering a factor by the frequency of values.
 
 ```
-starwars %>% select(name,height)
+books %>% mutate(Type = fct_lump(Type,n=4))
+book_price_plot %>% ggplot(aes(x = fct_infreq(Type),y = n))
+
 ```
 ** You can sepearate this part or combine in part of `Transform data with dplyr and finding insight the data`
 

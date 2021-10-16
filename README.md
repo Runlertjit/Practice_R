@@ -189,10 +189,13 @@ Result:
 ## Part 4: Visualization with GGplot2
 ### 1.) Graph show relation between height and mass
 ```
-scat_plot <- starwars %>% filter(mass<500) %>% ggplot(aes(x=height,y=mass))+
-  geom_point(aes(color=gender))
+book_price_plot <- books %>% mutate(Type = fct_lump(Type,n=4)) %>% count(Type,sort = T)
 
-scat_plot+geom_smooth()
+#graph
+book_price_plot <- book_price_plot %>% ggplot(aes(x = fct_infreq(Type),y = n)) + geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
+  coord_flip() + theme_bw()
+
+book_price_plot + ggtitle("Price Average of Type Book") + xlab("Type") + ylab("Price average")
 ```
 Result:
 

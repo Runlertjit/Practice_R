@@ -27,7 +27,7 @@ books <- read_csv("https://raw.githubusercontent.com/safesit23/INT214-Statistics
 This dataset holds a list of 270 books in the field of computer science and programming related topics.
 The list of books was constructed using many popular websites which provide information on book ratings an of all the book in those websites the 270 
 most popular were selected.
-# Explore Data
+### Explore Data
 ```
 View(books)
 glimpse(books)

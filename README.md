@@ -27,7 +27,24 @@ books <- read_csv("https://raw.githubusercontent.com/safesit23/INT214-Statistics
 This dataset holds a list of 270 books in the field of computer science and programming related topics.
 The list of books was constructed using many popular websites which provide information on book ratings an of all the book in those websites the 270 
 most popular were selected.
-
+# Explore Data
+```
+View(books)
+glimpse(books)
+```
+According to Programing Books, there are 271 rows and 7 columns.
+```
+> glimpse(books)
+Rows: 271
+Columns: 7
+$ Rating          <dbl> 4.17, 4.01, 3.33, 3.97, 4.06, 3.84, 4.09, 4.15, 3.87, 4~
+$ Reviews         <dbl> 3829, 1406, 0, 1658, 1325, 117, 5938, 1817, 2093, 0, 16~
+$ Book_title      <chr> "The Elements of Style", "The Information: A History, a~
+$ Description     <chr> "This style manual offers practical advice on improving~
+$ Number_Of_Pages <dbl> 105, 527, 50, 393, 305, 288, 256, 368, 259, 128, 352, 3~
+$ Type            <chr> "Hardcover", "Hardcover", "Kindle Edition", "Hardcover"~
+$ Price           <dbl> 9.323529, 11.000000, 11.267647, 12.873529, 13.164706, 1~
+```
 
 
 ## Part 2: Learning function from Tidyverse
@@ -42,7 +59,7 @@ ggplot(aes(x = fct_infreq(Type),y = n)) + geom_bar(stat="identity")
 ** You can sepearate this part or combine in part of `Transform data with dplyr and finding insight the data`
 
 ## Part 3: Transform data with dplyr and finding insight the data
-
+ใช้คำสั่ง `mutate()` ในการสร้าง Column เพิ่ม จากนั้นใช้คำสั่ง `fct_lump` ในการแสดงข้อมูลเพียงแค่ 4 กลุ่มแรก ถ้ามีข้อมูลอื่นอีกจะขึ้นเป็น Other ใช้คำสั่ง `count()` ในการนับจำนวนข้อมูลของแต่ละกลุ่ม และเรียงลำดับข้อมูลให้แสดงจากมากไปน้อย 
 1. Find out how many books in each type of this dataset are there.
 
 ```
@@ -67,7 +84,8 @@ Result:
 
 
 2. What is the average rating of each book type?
-
+ใช้คำสั่ง `mutate()` ในการสร้าง Column เพิ่ม จากนั้นใช้คำสั่ง `fct_lump` ในการแสดงข้อมูลเพียงแค่ 5 กลุ่มแรก ถ้ามีข้อมูลอื่นอีกจะขึ้นเป็น Other ใช้คำสั่ง `group_by()` ในการจัดกลุ่มของข้อมูลแต่ละประเภท 
+ใช้คำสั่ง `summarise()` เพื่อหาค่าเฉลี่ยของ Rating โดยให้มองข้ามข้อมูลที่มีค่าเป็น NA
 ```
 books %>% mutate(Type = fct_lump(Type,n=5)) %>%  group_by(Type) %>%
   summarise(mean = mean(Rating, na.rm = TRUE))
@@ -92,7 +110,8 @@ Result:
 
 
 3. What is the average price of each type of book?
-
+ใช้คำสั่ง `mutate()` ในการสร้าง Column เพิ่ม จากนั้นใช้คำสั่ง `fct_lump` ในการแสดงข้อมูลเพียงแค่ 5 กลุ่มแรก ถ้ามีข้อมูลอื่นอีกจะขึ้นเป็น Other ใช้คำสั่ง `group_by()` ในการจัดกลุ่มของข้อมูลแต่ละประเภท 
+ใช้คำสั่ง `summarise()` เพื่อหาค่าเฉลี่ยของ Price โดยให้มองข้ามข้อมูลที่มีค่าเป็น NA
 ```
 books %>% mutate(Type = fct_lump(Type,n=6)) %>%  group_by(Type) %>%
   summarise(mean = mean(Price, na.rm = TRUE))
@@ -117,7 +136,7 @@ Result:
 
 
 4. Find out which books have ratings more than 4.50.
-
+ใช้คำสั่ง `select` เพื่อเลือกให้แสดงแค่ Columns ของ Book_title, Number_Of_Pages, Price และ Rating จากนั้นใช้คำสั่ง `filter()` เพื่อหาข้อมูลเฉพาะที่มี Rating มากกว่า 4.50 คะแนน
 ```
 books %>% select(Book_title,Number_Of_Pages,Price,Rating) %>% filter(Rating > 4.50)
 ```
@@ -146,6 +165,8 @@ Book_title                                       Number_Of_Pages Price Rating
 
 5. Find out how many books are rating less than the average of each type book.
 
+ใช้ `filter()` ในการกรองข้อมูลที่มี Rating น้อยกว่าค่าเฉลี่ย จากนั้นใช้คำสั่ง `group_by()` เพื่อจัดข้อมูลของแต่ละประเภท และใช้คำสั่ง `count()` เพื่อนับจำนวนข้อมูลที่มีค่า Rating น้อยกว่าค่าเฉลี่ย 
+
 ```
 books %>% filter(Rating < mean(Rating, na.rm = TRUE)) %>% group_by(Type) %>% count()
 ```
@@ -168,7 +189,7 @@ Result:
 
 
 6. How many books have less than 200 reviews and a rating of more than 4.00 by grouping by book type.
-
+ใช้ `filter()` ในการกรองข้อมูลที่มีคน Review น้อยกว่า 200 และมีคะแนน Rating มากกว่า 4.00 จากนั้นใช้คำสั่ง `group_by()` เพื่อจัดข้อมูลของแต่ละประเภท และใช้คำสั่ง `count()` เพื่อนับจำนวนข้อมูล
 ```
 books %>% filter(Reviews < 200 & Rating > 4.00 ) %>% group_by(Type) %>% count()
 ```

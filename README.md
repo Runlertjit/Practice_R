@@ -77,10 +77,6 @@ Result:
 4 ebook              7
 5 Other              3
 ```
-//Explain
-
-- list 1
-- list 2
 
 
 2. What is the average rating of each book type?
@@ -103,10 +99,6 @@ Result:
 5 Paperback              4.06
 6 Unknown Binding        3.99
 ```
-//Explain
-
-- list 1
-- list 2
 
 
 3. What is the average price of each type of book?
@@ -129,10 +121,7 @@ Result:
 5 Paperback              45.8
 6 Unknown Binding        37.2
 ```
-//Explain
 
-- list 1
-- list 2
 
 
 4. Find out which books have ratings more than 4.50.
@@ -157,10 +146,7 @@ Book_title                                       Number_Of_Pages Price Rating
  9 CLR via C# (Developer Reference)                             863  66.3   4.58
 10 The Art of Computer Programming, Volumes 1-4a B~            3168 220.    4.77
 ```
-//Explain
 
-- list 1
-- list 2
 
 
 5. Find out how many books are rating less than the average of each type book.
@@ -182,10 +168,7 @@ Result:
 4 Paperback          66
 5 Unknown Binding     1
 ```
-//Explain
 
-- list 1
-- list 2
 
 
 6. How many books have less than 200 reviews and a rating of more than 4.00 by grouping by book type.
@@ -206,10 +189,7 @@ Result:
 5 Paperback                79
 6 Unknown Binding           1
 ```
-//Explain
 
-- list 1
-- list 2
 
 
 ## Part 4: Visualization with GGplot2
